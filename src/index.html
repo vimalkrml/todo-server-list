@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo Server</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <div class="mx-auto p-20">
+      <div class="flex gap-3">
+        <h1 class="mb-7">
+          <a href="#todo-form" class="bg-amber-400 rounded p-1">Users</a>
+        </h1>
+        <h1 class="mb-7">
+          <a href="#deletedUser" class="bg-amber-200 rounded p-1"
+            >Deleted User</a
+          >
+        </h1>
+      </div>
+
+      <form id="todo-form" class="mb-7">
+        <div class="flex justify-between">
+          <div class="bg-amber-100">
+            <label for="" class="p-1">Name</label>
+            <input
+              type="text"
+              id="name-input"
+              class="px-4 py-1 border rounded"
+            />
+          </div>
+          <div class="bg-amber-100">
+            <label for="" class="p-1">Username</label>
+            <input
+              type="text"
+              id="user-input"
+              class="px-4 py-1 border rounded"
+            />
+          </div>
+          <div class="bg-amber-100">
+            <label for="" class="p-1">Email</label>
+            <input
+              type="email"
+              id="email-input"
+              class="px-4 py-1 border rounded"
+            />
+          </div>
+          <button class="add-btn p-1 rounded-md bg-amber-500">Add user</button>
+        </div>
+
+        <div id="todo-items">
+          <h1 class="text-center shadow-md shadow-amber-100 p-5">
+            Users list loading...
+          </h1>
+        </div>
+        <!-- <div class="deleted-user p-5" id="deletedUser">
+          <div class="task flex justify-between border rounded-sm p-1">
+            <div>${user.name}</div>
+            <button
+              data-id="${user.id}"
+              class="delete-btn border text-orange-500"
+            >
+              Delete
+            </button>
+          </div>
+        </div> -->
+      </form>
+    </div>
+    <script type="module" src="../js/main.js"></script>
+  </body>
+</html>
