@@ -24,9 +24,9 @@ async function getFromServer() {
 function createList(users) {
     let template = '';
     users.forEach((user, value) => {
-        template += `<div class="task flex justify-between border rounded-sm p-1">
-        <div>${user.name}</div>
-        <button data-id="${user.id}" class="delete-btn border text-orange-500">Delete</button>
+        template += `<div class="task flex justify-between border border-black rounded-sm p-1">
+        <div class="">${user.name}</div>
+        <button data-id="${user.id}" class="delete-btn border text-white bg-zinc-500">Delete</button>
         </div>`
     });
     // console.log(template);
@@ -37,7 +37,14 @@ function createList(users) {
         delbtn.onclick = () => {
             const dataDelid = delbtn.dataset.id;
             // console.log(dataDelid);
-            deleteTask(dataDelid);
+            var alertData = confirm("Delete?");
+            console.log(alertData)
+            if (alertData == true) {
+                deleteTask(dataDelid);
+            }
+            else {
+                getFromServer();
+            }
         }
     })
     // console.log(delbtns);
@@ -61,17 +68,17 @@ addbtns.forEach((addbtn, index) => {
 
 async function addtask() {
     if (nameInput.value.length == 0) {
-        alert('Name is not entered !!!');
+        alert('Name is empty !');
         var getData = prompt('Enter Your Name', '');
         nameInput.value = getData;
     }
     else if (userInput.value.length == 0) {
-        alert('UserName is not entered !!!');
+        alert('UserName is empty !');
         var getData = prompt('Enter Your UserName', '');
         userInput.value = getData;
     }
     else if (emailInput.value.length == 0) {
-        alert('Email is not entered !!!');
+        alert('Email is empty!');
         var getData = prompt('Enter Your Email', '');
         emailInput.value = getData;
     }
