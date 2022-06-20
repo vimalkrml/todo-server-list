@@ -1,3 +1,4 @@
+import { data } from "autoprefixer";
 import "regenerator-runtime/runtime.js";
 
 const todoForm = document.getElementById('todo-form');
@@ -6,6 +7,7 @@ const todoItemsList = document.getElementById('todo-items');
 const nameInput = document.getElementById('name-input');
 const userInput = document.getElementById('user-input');
 const emailInput = document.getElementById('email-input');
+const deletedUser = document.getElementById('todoDelete-items');
 
 window.onsubmit = function (event) {
     event.preventDefault();
@@ -14,7 +16,7 @@ window.onsubmit = function (event) {
 async function getFromServer() {
     const response = await fetch('http://localhost:3000/users');
     const data = await response.json();
-    console.log(data)
+    // console.log(data);
     createList(data);
     nameInput.value = '';
     userInput.value = '';
@@ -38,9 +40,10 @@ function createList(users) {
             const dataDelid = delbtn.dataset.id;
             // console.log(dataDelid);
             var alertData = confirm("Delete?");
-            console.log(alertData)
+            // console.log(alertData)
             if (alertData == true) {
-                deleteTask(dataDelid);
+                let delId = deleteTask(dataDelid);
+                console.log(delId);
             }
             else {
                 getFromServer();
@@ -55,6 +58,7 @@ async function deleteTask(id) {
         method: "DELETE",
     })
     getFromServer();
+    // console.log(delUser(data));
     console.log(id);
 }
 
@@ -97,5 +101,16 @@ async function addtask() {
         getFromServer();
     }
 }
+
+// function delUser(dels) {
+//     let delTemplate = '';
+//     dels.forEach((user, value) => {
+//         delTemplate += `<div class="task flex justify-between border border-black rounded-sm p-1">
+//         <div class="">${user.name}</div>
+//         </div>`
+//     });
+
+//     deletedUser.innerHTML = delTemplate;
+// }
 
 getFromServer();

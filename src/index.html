@@ -11,12 +11,10 @@
     <div class="mx-auto p-20">
       <div class="flex gap-3">
         <h1 class="mb-7">
-          <a href="#todo-form" class="bg-amber-400 rounded p-1">Users</a>
+          <a href="" class="bg-amber-400 rounded p-1">Users</a>
         </h1>
         <h1 class="mb-7">
-          <a href="#deletedUser" class="bg-amber-200 rounded p-1"
-            >Deleted User</a
-          >
+          <a href="" class="bg-amber-200 rounded p-1">Deleted User</a>
         </h1>
       </div>
 
@@ -46,26 +44,23 @@
               class="px-4 py-1 border rounded"
             />
           </div>
-          <button class="add-btn p-1 rounded-md bg-amber-500">Add user</button>
+          <button class="add-btn p-1 rounded-md bg-amber-500 text-white">
+            Add user
+          </button>
         </div>
 
-        <div id="todo-items" class="bg-orange-300">
+        <div id="todo-items" class="bg-orange-300 mb-5">
           <h1 class="text-center shadow-md shadow-amber-100 p-5">
             Users list loading...
           </h1>
         </div>
-        <!-- <div class="deleted-user p-5" id="deletedUser">
-          <div class="task flex justify-between border rounded-sm p-1">
-            <div>${user.name}</div>
-            <button
-              data-id="${user.id}"
-              class="delete-btn border text-orange-500"
-            >
-              Delete
-            </button>
-          </div>
-        </div> -->
       </form>
+
+      <!-- <div id="todoDelete-items" class="delete-item bg-orange-300">
+        <h1 class="text-center shadow-md shadow-amber-100 p-5">
+          Deleted user list loading...
+        </h1>
+      </div> -->
     </div>
     <script type="module" src="../js/main.js"></script>
   </body>
