@@ -7,7 +7,7 @@ const todoItemsList = document.getElementById('todo-items');
 const nameInput = document.getElementById('name-input');
 const userInput = document.getElementById('user-input');
 const emailInput = document.getElementById('email-input');
-const deletedUser = document.getElementById('todoDelete-items');
+const previewUser = document.getElementById('todoPreview-items');
 
 window.onsubmit = function (event) {
     event.preventDefault();
@@ -16,7 +16,7 @@ window.onsubmit = function (event) {
 async function getFromServer() {
     const response = await fetch('http://localhost:3000/users');
     const data = await response.json();
-    // console.log(data);
+    console.log(data);
     createList(data);
     nameInput.value = '';
     userInput.value = '';
@@ -27,9 +27,10 @@ function createList(users) {
     let template = '';
     users.forEach((user, value) => {
         template += `<div class="task flex justify-between border border-black rounded-sm p-1">
-        <div class="">${user.name}</div>
+        <div>${user.name}</div>
         <button data-id="${user.id}" class="delete-btn border text-white bg-zinc-500">Delete</button>
-        </div>`
+        </div>
+       `
     });
     // console.log(template);
     todoItemsList.innerHTML = template;
@@ -38,16 +39,34 @@ function createList(users) {
     delbtns.forEach((delbtn, index) => {
         delbtn.onclick = () => {
             const dataDelid = delbtn.dataset.id;
-            // console.log(dataDelid);
+            console.log(dataDelid);
             var alertData = confirm("Delete?");
             // console.log(alertData)
             if (alertData == true) {
-                let delId = deleteTask(dataDelid);
-                console.log(delId);
+                deleteTask(dataDelid);
             }
             else {
                 getFromServer();
             }
+        }
+    })
+
+    const previewBtns = document.querySelectorAll('.preview-btn');
+    previewBtns.forEach((prebtn, index) => {
+        prebtn.onclick = () => {
+            const dataPreid = prebtn.dataset.id;
+            const user = users.find((user) => user.id);
+            console.log(user)
+            let template = '';
+            users.forEach((user, index) => {
+                template += `<div class="task flex justify-between border border-black rounded-sm p-1">
+                <div>Name-${user.name}</div>
+                <div>Username-${user.username}</div>
+                <div>Email-${user.email}</div>
+                </div>`
+            });
+            // console.log(template);
+            previewUser.innerHTML = template;
         }
     })
     // console.log(delbtns);
@@ -101,16 +120,5 @@ async function addtask() {
         getFromServer();
     }
 }
-
-// function delUser(dels) {
-//     let delTemplate = '';
-//     dels.forEach((user, value) => {
-//         delTemplate += `<div class="task flex justify-between border border-black rounded-sm p-1">
-//         <div class="">${user.name}</div>
-//         </div>`
-//     });
-
-//     deletedUser.innerHTML = delTemplate;
-// }
 
 getFromServer();

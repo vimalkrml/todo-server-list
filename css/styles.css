@@ -11,13 +11,22 @@
 
 .task {
     background-color: rgb(255, 220, 168);
+    justify-content: space-between;
 }
 
 #todo-form{
     display: block;
 }
 
-.delete-item {
-    display: none;
+.preview-item {
+    display: hidden;
+}
+.preview-btn {
+    background-color: rgb(255, 0, 0);
+    color: aliceblue;
+    padding: 0 5px;
 }
 
+.preview {
+    display: hidden;
+}
