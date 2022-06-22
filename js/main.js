@@ -54,23 +54,23 @@ function createList(users) {
     const previewBtns = document.querySelectorAll('.preview-btn');
     previewBtns.forEach((prebtn, index) => {
         prebtn.onclick = () => {
-            const dataPreid = prebtn.dataset.id;
-            const user = users.find((user) => user.id);
-            console.log(user)
+            // const dataPreid = prebtn.dataset.id;
+            // console.log(dataPreid);
             let template = '';
             users.forEach((user, index) => {
                 template += `<div class="task flex justify-between border border-black rounded-sm p-1">
                 <div>Name-${user.name}</div>
                 <div>Username-${user.username}</div>
                 <div>Email-${user.email}</div>
+                <button data-id="${user.id}" class="edit-task delete-btn border text-white bg-zinc-500">Edit</button>
                 </div>`
             });
             // console.log(template);
             previewUser.innerHTML = template;
         }
     })
-    // console.log(delbtns);
 }
+
 
 async function deleteTask(id) {
     await fetch('http://localhost:3000/users/' + id, {
